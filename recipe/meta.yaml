@@ -1,4 +1,4 @@
-{% set version = '3.2.2' %}
+{% set version = "3.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,11 +11,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ergm.count_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ergm.count/ergm.count_{{ version }}.tar.gz
-  sha256: 0bd86ba9e433e94410e1a5cfff4965396a1b192cbe2d7d90c9c61a5fea3ee0fd
+  sha256: e14b4c973d3bde3adc15ebbda5443866678f3919bf5e942bf7a8b6bcd4ea93a0
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
   skip: true  # [win32]
 
   rpaths:
