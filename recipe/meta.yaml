@@ -1,4 +1,4 @@
-{% set version = '3.2.2' %}
+{% set version = '3.3.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,17 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: ergm.count_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/ergm.count_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ergm.count/ergm.count_{{ version }}.tar.gz
-  sha256: 0bd86ba9e433e94410e1a5cfff4965396a1b192cbe2d7d90c9c61a5fea3ee0fd
+  sha256: e14b4c973d3bde3adc15ebbda5443866678f3919bf5e942bf7a8b6bcd4ea93a0
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
-  skip: true  # [win32]
-
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,19 +25,18 @@ requirements:
     - {{native}}toolchain        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
-
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-ergm >=3.4
+    - r-ergm >=3.9
     - r-network
     - r-statnet.common >=3.1
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
-    - r-ergm >=3.4
+    - r-ergm >=3.9
     - r-network
     - r-statnet.common >=3.1
 
@@ -59,9 +55,22 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
+    - conda-forge/r
     - stevierene82
+
+# Package: ergm.count
+# Version: 3.3.0
+# Date: 2018-08-25
+# Title: Fit, Simulate and Diagnose Exponential-Family Models for Networks with Count Edges
+# Authors@R: c( person("Pavel N.", "Krivitsky", role=c("aut","cre"), email="pavel@uow.edu.au", comment=c(ORCID="0000-0002-9101-3362")), person("Mark S.", "Handcock", role=c("ctb"), email="handcock@stat.ucla.edu"), person("David R.", "Hunter", role=c("ctb"), email="dhunter@stat.psu.edu"))
+# LinkingTo: ergm
+# Depends: statnet.common (>= 3.1), ergm (>= 3.9), network
+# Description: A set of extensions for the 'ergm' package to fit weighted networks whose edge weights are counts.
+# License: GPL-3 + file LICENSE
+# URL: http://statnet.org
+# NeedsCompilation: yes
+# Packaged: 2018-08-25 10:20:09 UTC; pavel
+# Author: Pavel N. Krivitsky [aut, cre] (<https://orcid.org/0000-0002-9101-3362>), Mark S. Handcock [ctb], David R. Hunter [ctb]
+# Maintainer: Pavel N. Krivitsky <pavel@uow.edu.au>
+# Repository: CRAN
+# Date/Publication: 2018-08-25 22:34:27 UTC
