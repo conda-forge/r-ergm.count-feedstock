@@ -47,7 +47,7 @@ test:
 
 about:
   home: http://statnet.org
-  license: GPL-3
+  license: GPL-3.0-only
   summary: A set of extensions for the 'ergm' package to fit weighted networks whose edge weights
     are counts.
   license_family: GPL3
