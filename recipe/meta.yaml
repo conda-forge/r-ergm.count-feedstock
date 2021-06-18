@@ -1,4 +1,4 @@
-{% set version = '3.4.0' %}
+{% set version = "4.0.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ergm.count_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ergm.count/ergm.count_{{ version }}.tar.gz
-  sha256: 7c24c79d0901c18991cce907306a1531cca676ae277c6b0a0e4962ad27c36baf
+  sha256: 316ed3cbe4b472eec79e8a5fd4183ce953070f6d98056d87423bd6d9ac155bd1
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -48,10 +48,9 @@ test:
 about:
   home: http://statnet.org
   license: GPL-3.0-only
-  summary: A set of extensions for the 'ergm' package to fit weighted networks whose edge weights
-    are counts.
+  summary: A set of extensions for the 'ergm' package to fit weighted networks whose edge weights are counts.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
