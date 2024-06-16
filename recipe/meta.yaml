@@ -1,4 +1,4 @@
-{% set version = "4.1.1" %}
+{% set version = "4.1.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ergm.count_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ergm.count/ergm.count_{{ version }}.tar.gz
-  sha256: 446893614ad8b41aa39c37c2bf45a167f575536bb6778b8ad1fbcddb7b934932
+  sha256: 9bce70b64a2f60b242603b771370b40d7f7aeed37ed426670131fd966c13b020
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +22,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
